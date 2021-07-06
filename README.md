@@ -1,6 +1,23 @@
-# ObserverNotes
+# Zadanie domowe w procesie rekrutacyjnym UNIDE
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.3.
+Ten projekt to wariacja na temat klasycznej listy TODO. Twoim zadaniem będzie dodanie pobierania listy notatek z API - https://swapi.dev/.
+
+# Wymagania
+
+* Stwórz fork'a tego repozytorium 
+* Swoje zmiany wprowadzaj na stworzonego przez siebie branch'a o nazwie `api`.
+* Dodaj pobieranie listy postaci z API (`/api/people`).
+* Przychodzące obiekty postaci mają zostać zapisane w stanie aplikacji jako notatki (w istniejącym już NotesService) 
+* Przemapowanie postaci na notatkę ma zajść w następujący sposób (postać -> notatka):
+  * `name` -> `id`,
+  * `name` -> `title`,
+  * `hair_color` -> `note`,
+* Aplikacja powinna zachować aktualnie działające feature'y: wyświetlanie, dodawanie i usuwanie notatek.
+* Po zakończeniu pracy stwórz pull request'a do brancha `main` i powiadom nas mailowo o wykonaniu zadania.
+
+Powodzenia 👾
+
+- - - -
 
 ## Development server
 
