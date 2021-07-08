@@ -13,7 +13,7 @@ interface NotesState {
 const initialState = {
   notes: [],
   isLoading: false,
-}
+};
 
 @Injectable({
   providedIn: 'root',
@@ -42,14 +42,26 @@ export class NotesService {
     return this.state.asObservable().pipe(
       map(notesState => notesState.isLoading),
       distinctUntilChanged()
-    )
+    );
+  }
+
+  startLoading() {
+    this.setState({
+      isLoading: true
+    });
+  }
+
+  endLoading() {
+    this.setState({
+      isLoading: false
+    });
   }
 
   notes(): Observable<Note[]> {
     return this.state.asObservable().pipe(
       map(notesState => notesState.notes),
       distinctUntilChanged()
-    )
+    );
   }
 
   setNote(note: Note) {
@@ -64,6 +76,5 @@ export class NotesService {
   deleteNote(noteId: string) {
     this.setState({ notes: [...this.getState.notes.filter(n => n.id !== noteId)] });
   }
-
 }
 

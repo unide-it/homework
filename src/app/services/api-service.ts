@@ -10,15 +10,15 @@ export interface People {
 }
 
 export interface Person {
-  name?: string;
-  hair_color?: string;
+  name: string;
+  hair_color: string;
 }
 
 @Injectable({providedIn: 'root'})
 export class ApiService {
   constructor(private http: HttpClient) {}
 
-  getNotesPage(url: string = environment.baseApiUrl) {
-    return this.http.get<People>(`${url}/people`);
+  getNotesPage(url: string = `${environment.baseApiUrl}/people`) {
+    return this.http.get<People>(url);
   }
 }

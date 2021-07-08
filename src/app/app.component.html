@@ -1,6 +1,6 @@
 <main>
   <subject-header></subject-header>
-  <div class="container">
+  <div class="container" *ngIf="!(isLoading | async) else spinner">
     <div>
       <subject-note-form></subject-note-form>
     </div>
@@ -14,4 +14,7 @@
       </div>
     </div>
   </div>
+  <ng-template #spinner>
+    <div class="loader" *ngIf="isLoading | async">Loading...</div>
+  </ng-template>
 </main>
