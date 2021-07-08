@@ -13,7 +13,5 @@ export class NoteListComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.notes);
   }
-
 }

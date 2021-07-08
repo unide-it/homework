@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Note } from 'src/app/models/note';
 import { NotesService } from 'src/app/services/notes-service';
 
@@ -20,7 +20,6 @@ export class NoteCardComponent implements OnInit {
   }
 
   deleteNote() {
-    this.notesService.deleteNote(this.note.id)
+    this.notesService.deleteNote(this.note.id);
   }
-
 }
