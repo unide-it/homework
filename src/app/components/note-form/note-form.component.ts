@@ -65,7 +65,7 @@ export class NoteFormComponent implements OnInit {
       ...note,
       id: v4(),
     };
-    this.notesService.setNote(note)
+    this.notesService.setNote(noteWithId);
     this.resetState();
   }
 
