@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { distinctUntilChanged, map } from 'rxjs/operators';
 import { Note } from '../models/note';
 
-
 interface NotesState {
   notes: Note[];
   isLoading: boolean;
@@ -13,14 +12,12 @@ interface NotesState {
 const initialState = {
   notes: [],
   isLoading: false,
-}
+};
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class NotesService {
-
   state: BehaviorSubject<NotesState>;
 
   constructor() {
@@ -40,30 +37,28 @@ export class NotesService {
 
   isLoading(): Observable<boolean> {
     return this.state.asObservable().pipe(
-      map(notesState => notesState.isLoading),
+      map((notesState) => notesState.isLoading),
       distinctUntilChanged()
-    )
+    );
   }
 
   notes(): Observable<Note[]> {
     return this.state.asObservable().pipe(
-      map(notesState => notesState.notes),
+      map((notesState) => notesState.notes),
       distinctUntilChanged()
-    )
+    );
   }
 
   setNote(note: Note) {
+    console.log(this.getState.notes, note);
     this.setState({
-      notes: [
-        ...this.getState.notes.filter((n) => n.id !== note.id),
-        note
-      ]
+      notes: [...this.getState.notes.filter((n) => n.id !== note.id), note],
     });
   }
 
   deleteNote(noteId: string) {
-    this.setState({ notes: [...this.getState.notes.filter(n => n.id !== noteId)] });
+    this.setState({
+      notes: [...this.getState.notes.filter((n) => n.id !== noteId)],
+    });
   }
-
 }
-

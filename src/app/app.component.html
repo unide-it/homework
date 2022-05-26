@@ -8,7 +8,9 @@
       <div class="text-center">
         <div class="header text-center">
           <div>
-            <subject-note-list [notes]="notes | async"></subject-note-list>
+            <subject-note-list
+              [notes]="(notes | async) || []"
+            ></subject-note-list>
           </div>
         </div>
       </div>

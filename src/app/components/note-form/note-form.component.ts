@@ -6,17 +6,15 @@ import { v4 } from 'uuid';
 @Component({
   selector: 'subject-note-form',
   templateUrl: './note-form.component.html',
-  styleUrls: ['./note-form.component.scss']
+  styleUrls: ['./note-form.component.css'],
 })
 export class NoteFormComponent implements OnInit {
-
-  constructor(private notesService: NotesService) {
-  }
+  constructor(private notesService: NotesService) {}
 
   note: Note = {
     id: '',
     title: '',
-    note: ''
+    note: '',
   };
 
   step = 1;
@@ -27,6 +25,8 @@ export class NoteFormComponent implements OnInit {
         return !!this.note.title;
       case 2:
         return !!this.note.note;
+      default:
+        return false;
     }
   }
 
@@ -55,7 +55,7 @@ export class NoteFormComponent implements OnInit {
     this.note = {
       id: '',
       title: '',
-      note: ''
+      note: '',
     };
     this.step = 1;
   }
@@ -65,11 +65,9 @@ export class NoteFormComponent implements OnInit {
       ...note,
       id: v4(),
     };
-    this.notesService.setNote(note)
+    this.notesService.setNote(noteWithId);
     this.resetState();
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
