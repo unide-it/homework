@@ -49,6 +49,11 @@ export class NotesService {
     );
   }
 
+  setNotes(notes: Note[]) {
+    console.log(this.getState.notes, notes);
+    notes.forEach(x => this.setNote(x));
+  }
+
   setNote(note: Note) {
     console.log(this.getState.notes, note);
     this.setState({
