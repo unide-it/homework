@@ -6,7 +6,7 @@ import { v4 } from 'uuid';
 @Component({
   selector: 'subject-note-form',
   templateUrl: './note-form.component.html',
-  styleUrls: ['./note-form.component.css'],
+  styleUrls: ['./note-form.component.scss'],
 })
 export class NoteFormComponent implements OnInit {
   constructor(private notesService: NotesService) {}

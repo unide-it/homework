@@ -10,27 +10,13 @@ button {
 
 button:focus {
   outline: none;
-  transform: scale(1.1);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-}
-
-input {
-  border: none;
-  border-bottom: 2px solid rgb(108, 104, 255);
-  border-radius: 0;
-  padding: 14px 10px;
-}
-
-input:focus {
-  outline: none;
-  box-shadow: none;
 }
 
 .note-form {
   width: 50%;
   min-width: 300px;
   margin: 6% auto;
-  background: white;
   box-shadow: 0px 1px 15px 1px rgba(0, 0, 0, 0.04);
   border-radius: 20px;
   padding: 20px 16px 35px;
@@ -51,21 +37,6 @@ input:focus {
   padding: 14px 10px;
 }
 
-.submit-button {
-  border: none;
-  border-bottom: 2px solid rgb(108, 104, 255);
-  border-radius: 4px;
-  padding: 14px 10px;
-  background: rgb(108, 104, 255);
-  color: white;
-}
-
-.prev-button {
-  border: none;
-  border-bottom: 2px solid rgb(108, 104, 255);
-  border-radius: 4px;
-  padding: 14px 10px;
-  border: 1px solid indianred;
-  color: indianred;
-  margin-right: 10px;
+#stepper, #prev {
+  margin: 10px;
 }

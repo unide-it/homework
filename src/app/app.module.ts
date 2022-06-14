@@ -16,6 +16,7 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {EffectsModule} from '@ngrx/effects';
 import {SharedStateNotesModule} from './store/reducers/state';
 import {ApiEffects} from './store/effects/api.effects';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import {ApiEffects} from './store/effects/api.effects';
     }),
     EffectsModule.forRoot([]),
     EffectsModule.forFeature([ApiEffects]),
+    NgbModule,
   ],
   providers: [NotesService, HttpClientService, ApiService],
   bootstrap: [AppComponent],
