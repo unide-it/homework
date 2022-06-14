@@ -8,8 +8,13 @@
       <div class="text-center">
         <div class="header text-center">
           <div>
+            <div *ngIf="(isLoading$ | async)" class="d-flex justify-content-center" style="transform: scale(3)">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
             <subject-note-list
-              [notes]="(notes | async) || []"
+              [notes]="(notes$ | async) || []"
             ></subject-note-list>
           </div>
         </div>

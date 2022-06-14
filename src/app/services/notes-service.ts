@@ -1,69 +1,25 @@
-import { BehaviorSubject, Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
-import { distinctUntilChanged, map } from 'rxjs/operators';
-import { Note } from '../models/note';
-
-interface NotesState {
-  notes: Note[];
-  isLoading: boolean;
-  error?: string;
-}
-
-const initialState = {
-  notes: [],
-  isLoading: false,
-};
+import {Injectable} from '@angular/core';
+import {Note} from '../models/note';
+import {Store} from '@ngrx/store';
+import * as NotePageActions from '../store/actions/note-page.actions';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NotesService {
-  state: BehaviorSubject<NotesState>;
 
-  constructor() {
-    this.state = new BehaviorSubject<NotesState>(initialState);
-  }
-
-  protected get getState() {
-    return this.state.getValue();
-  }
-
-  protected setState(newState: Partial<NotesState>) {
-    this.state.next({
-      ...this.getState,
-      ...newState,
-    });
-  }
-
-  isLoading(): Observable<boolean> {
-    return this.state.asObservable().pipe(
-      map((notesState) => notesState.isLoading),
-      distinctUntilChanged()
-    );
-  }
-
-  notes(): Observable<Note[]> {
-    return this.state.asObservable().pipe(
-      map((notesState) => notesState.notes),
-      distinctUntilChanged()
-    );
-  }
-
-  setNotes(notes: Note[]) {
-    console.log(this.getState.notes, notes);
-    notes.forEach(x => this.setNote(x));
+  constructor(private store: Store) {
   }
 
   setNote(note: Note) {
-    console.log(this.getState.notes, note);
-    this.setState({
-      notes: [...this.getState.notes.filter((n) => n.id !== note.id), note],
-    });
+    this.store.dispatch(NotePageActions.createNote({
+      note: note
+    }));
   }
 
   deleteNote(noteId: string) {
-    this.setState({
-      notes: [...this.getState.notes.filter((n) => n.id !== noteId)],
-    });
+    this.store.dispatch(NotePageActions.deleteNote({
+      noteId: noteId
+    }));
   }
 }
