@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Note } from 'src/app/models/note';
-import { NotesService } from 'src/app/services/notes-service';
+import {AfterViewInit, Component, Input} from '@angular/core';
+import {Note} from 'src/app/models/note';
+import {NotesService} from 'src/app/services/notes-service';
 
 declare const feather: any;
 
@@ -9,16 +9,17 @@ declare const feather: any;
   templateUrl: './note-card.component.html',
   styleUrls: ['./note-card.component.css'],
 })
-export class NoteCardComponent implements OnInit {
+export class NoteCardComponent implements AfterViewInit {
   @Input() note?: Note;
 
-  constructor(private notesService: NotesService) {}
-
-  ngOnInit() {
-    feather.replace();
+  constructor(private notesService: NotesService) {
   }
 
   deleteNote() {
     if (this.note) this.notesService.deleteNote(this.note.id);
+  }
+
+  ngAfterViewInit(): void {
+    feather.replace();
   }
 }
