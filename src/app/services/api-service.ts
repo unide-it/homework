@@ -7,13 +7,13 @@ import {Note} from '../models/note';
 @Injectable({ providedIn: 'root' })
 export class ApiService {
 
-  private apiBaseUrl = 'https://swapi.dev/api/';
+  private static API_BASE_URL = 'https://swapi.dev/api/';
 
   constructor(private http: HttpClientService) {
   }
 
   getPeople(): Observable<any> {
-    return this.http.get(this.apiBaseUrl + 'people/')
+    return this.http.get(`${(ApiService.API_BASE_URL)}people/`)
   }
 
   getNotesFromPeople(): Observable<Note[]> {
