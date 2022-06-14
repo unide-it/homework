@@ -5,7 +5,7 @@ export const enter = createAction('[Note Page] Enter');
 
 export const createNote = createAction(
   '[Note Page] Create Note',
-  props<{ note: Note}>()
+  props<{ note: Note }>()
 );
 
 export const deleteNote = createAction(

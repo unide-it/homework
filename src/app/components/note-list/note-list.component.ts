@@ -1,5 +1,5 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import { Note } from 'src/app/models/note';
+import {Component, Input, OnInit} from '@angular/core';
+import {Note} from 'src/app/models/note';
 
 @Component({
   selector: 'subject-note-list',
@@ -9,7 +9,8 @@ import { Note } from 'src/app/models/note';
 export class NoteListComponent implements OnInit {
   @Input() notes: Note[] = [];
 
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit() {
     console.log(this.notes);

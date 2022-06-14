@@ -38,7 +38,7 @@ export const reducer = createReducer(
       ...state,
       loading: false,
       loaded: true
-    })
+    });
   }),
   on(NotePageActions.deleteNote, (state, action) => {
     return adapter.removeOne(action.noteId, state);
@@ -46,7 +46,7 @@ export const reducer = createReducer(
 );
 
 
-export const { selectAll, selectEntities } = adapter.getSelectors();
+export const {selectAll, selectEntities} = adapter.getSelectors();
 
 export const getNotesLoading = (state: State) => state.loading;
 export const getNotesLoaded = (state: State) => state.loaded;

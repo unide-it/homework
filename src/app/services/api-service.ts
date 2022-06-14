@@ -4,7 +4,7 @@ import {HttpClientService} from './http-client.service';
 import {map} from 'rxjs/operators';
 import {Note} from '../models/note';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class ApiService {
 
   private static API_BASE_URL = 'https://swapi.dev/api/';
@@ -13,7 +13,7 @@ export class ApiService {
   }
 
   getPeople(): Observable<any> {
-    return this.http.get(`${(ApiService.API_BASE_URL)}people/`)
+    return this.http.get(`${(ApiService.API_BASE_URL)}people/`);
   }
 
   getNotesFromPeople(): Observable<Note[]> {

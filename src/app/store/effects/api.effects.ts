@@ -3,7 +3,7 @@ import {ApiService} from '../../services/api-service';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import * as NotePageActions from '../actions/note-page.actions';
 import * as ApiActions from '../actions/api-service.actions';
-import {catchError, exhaustMap} from 'rxjs';
+import {exhaustMap} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Injectable()

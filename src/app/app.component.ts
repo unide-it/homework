@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {NotesService} from './services/notes-service';
-import {ApiService} from './services/api-service';
 import {Store} from '@ngrx/store';
 import * as NotePageActions from './store/actions/note-page.actions';
 import {Observable} from 'rxjs';
@@ -15,10 +13,9 @@ import {getNotesLoading, selectAllNotes} from './store/reducers/state';
 export class AppComponent implements OnInit {
 
   notes$: Observable<Note[]>;
-  isLoading$: Observable<boolean>
-  constructor(private notesService: NotesService,
-              private apiService: ApiService,
-              private store: Store) {
+  isLoading$: Observable<boolean>;
+
+  constructor(private store: Store) {
     this.notes$ = this.store.select(selectAllNotes);
     this.isLoading$ = this.store.select(getNotesLoading);
   }

@@ -1,11 +1,13 @@
 <form class="card text-white bg-secondary mb-3 note-form" (ngSubmit)="completeStep()" #noteForm="ngForm">
   <div class="inputs-holder">
     <div class="form-group" *ngIf="step === 1 else noteText">
-      <input class="form-control app-input" id="title" name="title" placeholder="The post title" [(ngModel)]="note.title"/>
+      <input class="form-control app-input" id="title" name="title" placeholder="The post title"
+             [(ngModel)]="note.title"/>
     </div>
     <ng-template #noteText>
       <div class="form-group">
-      <textarea class="form-control app-input" id="note-text" rows="4" placeholder="Create a note for future use" [(ngModel)]="note.note"
+      <textarea class="form-control app-input" id="note-text" rows="4" placeholder="Create a note for future use"
+                [(ngModel)]="note.note"
                 name="text"></textarea>
       </div>
     </ng-template>

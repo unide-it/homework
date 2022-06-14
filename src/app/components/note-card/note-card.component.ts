@@ -1,6 +1,6 @@
-import {AfterViewChecked, AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import { Note } from 'src/app/models/note';
-import { NotesService } from 'src/app/services/notes-service';
+import {AfterViewInit, Component, Input} from '@angular/core';
+import {Note} from 'src/app/models/note';
+import {NotesService} from 'src/app/services/notes-service';
 
 declare const feather: any;
 
@@ -12,7 +12,8 @@ declare const feather: any;
 export class NoteCardComponent implements AfterViewInit {
   @Input() note?: Note;
 
-  constructor(private notesService: NotesService) {}
+  constructor(private notesService: NotesService) {
+  }
 
   deleteNote() {
     if (this.note) this.notesService.deleteNote(this.note.id);
