@@ -77,7 +77,7 @@ export class NotesService {
    * Method adds list of new notes excluding duplicates.
    * @param notes new notes
    */
-  setNotes(notes: Note[]) {
+  public setNotes(notes: Note[]) {
     this.setState({
       notes: [...this.getState.notes,
         ...notes.filter(note => !this.getState.notes.map(n => n.id).includes(note.id))]

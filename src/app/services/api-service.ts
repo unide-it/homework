@@ -4,11 +4,17 @@ import { concatMap, Observable, of } from "rxjs";
 import { map } from "rxjs/operators";
 import { Note } from "../models/note";
 
+/**
+ * Returned person from API
+ */
 interface Person {
   name: string,
   hair_color: string;
 }
 
+/**
+ * Response from API
+ */
 interface ApiResponse {
   count: number,
   previous: string,
@@ -16,16 +22,19 @@ interface ApiResponse {
   results: Person[]
 }
 
+/**
+ * Service fetching data from API and return as observable of Notes
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  private static API_URL = 'https://swapi.dev/api/people';
+  public static API_URL = 'https://swapi.dev/api/people';
 
   /**
    *
-   * @param _httpClient
+   * @param _httpClient client HTTP API for application
    */
   constructor(private _httpClient: HttpClient) {
   }
@@ -57,7 +66,7 @@ export class ApiService {
   }
 
   /**
-   * Method return observable of notes.
+   * Method return observable of notes. This method get observable of people and map to observable of notes.
    */
   public fetchNotes(): Observable<Note[]> {
     return this.fetchPeople().pipe(
