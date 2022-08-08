@@ -15,10 +15,13 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.notesService.changeLoadingStatus(true);
     this.apiService.fetchNotes().subscribe(notes => {
-      this.notesService.setNotes(notes);
-      this.notesService.changeLoadingStatus(false);
-    });
+        this.notesService.setNotes(notes)
+      },
+      error => {
+        console.log('An unexpected error occurred while retrieving data from the server');
+        console.log(error)
+      }
+    );
   }
 }

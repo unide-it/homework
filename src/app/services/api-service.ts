@@ -44,7 +44,6 @@ export class ApiService {
   private fetchPeopleByPage(url: string): Observable<Person[]> {
     return this._httpClient.get<ApiResponse>(url, {observe: "body"}).pipe(
       concatMap(value => {
-        console.log(value);
         let results = value.results;
         if (value.next) {
           return this.fetchPeopleByPage(value.next).pipe(
