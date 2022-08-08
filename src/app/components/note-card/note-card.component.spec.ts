@@ -8,12 +8,13 @@ describe('NoteCardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [NoteCardComponent],
+      declarations: [NoteCardComponent]
     }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(NoteCardComponent);
+
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

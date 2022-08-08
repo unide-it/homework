@@ -1,19 +1,24 @@
 <main>
   <subject-header></subject-header>
+  <h1>{{title}}</h1>
   <div class="container">
-    <div>
-      <subject-note-form></subject-note-form>
-    </div>
-    <div class="" id="notes-box">
-      <div class="text-center">
-        <div class="header text-center">
-          <div>
-            <subject-note-list
-              [notes]="(notes | async) || []"
-            ></subject-note-list>
+    <ng-container *ngIf="!(isLoading | async)">
+      <div>
+        <subject-note-form></subject-note-form>
+      </div>
+      <div class="" id="notes-box">
+        <div class="text-center">
+          <div class="header text-center">
+            <div>
+              <subject-note-list
+                [notes]="(notes | async) || []"
+              ></subject-note-list>
+            </div>
           </div>
         </div>
       </div>
+    </ng-container>
+    <div class="spinner" *ngIf="(isLoading | async)">
     </div>
   </div>
 </main>

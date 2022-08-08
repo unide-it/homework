@@ -61,4 +61,27 @@ export class NotesService {
       notes: [...this.getState.notes.filter((n) => n.id !== noteId)],
     });
   }
+
+  /**
+   * Method changing loading status
+   * @param newLoadingStatus loading status
+   */
+  public changeLoadingStatus(newLoadingStatus: boolean) {
+    this.state.next({
+      ...this.getState,
+      isLoading: newLoadingStatus
+    });
+  }
+
+  /**
+   * Method adds list of new notes excluding duplicates.
+   * @param notes new notes
+   */
+  public setNotes(notes: Note[]) {
+    this.setState({
+      notes: [...this.getState.notes,
+        ...notes.filter(note => !this.getState.notes.map(n => n.id).includes(note.id))]
+    });
+  }
+
 }

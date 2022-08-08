@@ -8,17 +8,33 @@ import { NoteFormComponent } from './components/note-form/note-form.component';
 import { NoteListComponent } from './components/note-list/note-list.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NotesService } from './services/notes-service';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import { ApiService } from "./services/api-service";
+import {HttpLoadingInterceptor} from "./config/http/http-loading.interceptor";
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
     NoteCardComponent,
     NoteFormComponent,
-    NoteListComponent,
-    HeaderComponent,
+    NoteListComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [NotesService],
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    FormsModule,
+    HttpClientModule
+  ],
+  providers: [
+    ApiService,
+    NotesService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpLoadingInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
