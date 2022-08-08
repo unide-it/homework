@@ -23,8 +23,9 @@ import {HttpLoadingInterceptor} from "./config/http/http-loading.interceptor";
   imports: [
     AppRoutingModule,
     BrowserModule,
-    HttpClientModule,
-    FormsModule],
+    FormsModule,
+    HttpClientModule
+  ],
   providers: [
     ApiService,
     NotesService,
