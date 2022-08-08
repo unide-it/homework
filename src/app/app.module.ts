@@ -8,17 +8,26 @@ import { NoteFormComponent } from './components/note-form/note-form.component';
 import { NoteListComponent } from './components/note-list/note-list.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NotesService } from './services/notes-service';
+import { HttpClientModule } from "@angular/common/http";
+import { ApiService } from "./services/api-service";
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
     NoteCardComponent,
     NoteFormComponent,
-    NoteListComponent,
-    HeaderComponent,
+    NoteListComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [NotesService],
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    HttpClientModule,
+    FormsModule],
+  providers: [
+    ApiService,
+    NotesService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

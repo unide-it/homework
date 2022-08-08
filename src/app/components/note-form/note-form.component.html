@@ -12,8 +12,8 @@
 
   </div>
   <button class="prev-button" id="prev" type="button" [hidden]="step === 1" (click)="prevStep()">Prev</button>
-  <button class="submit-button" id="stepper" type="submit"><span
-    *ngIf="step === 1 else submit">Next</span>
+  <button class="submit-button" id="stepper" type="submit">
+    <span *ngIf="step === 1 else submit">Next</span>
     <ng-template #submit>Submit</ng-template>
   </button>
 </form>

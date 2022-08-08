@@ -1,7 +1,7 @@
 <main>
   <subject-header></subject-header>
   <div class="container">
-    <div>
+    <div *ngIf="!(isLoading | async)">
       <subject-note-form></subject-note-form>
     </div>
     <div class="" id="notes-box">
@@ -14,6 +14,8 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="spinner" *ngIf="(isLoading | async)">
     </div>
   </div>
 </main>
